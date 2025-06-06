@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import * as THREE from 'three';
-import { ChevronDown, Github, Linkedin, Mail, ExternalLink, Code, Palette, Zap, Globe, Star, ArrowRight } from 'lucide-react';
+import { ChevronDown, Github, Linkedin, Mail, ExternalLink, Code, Layout, Database, Server, Star, ArrowRight, Globe } from 'lucide-react';
 
 // Custom 3D Scene Component
 const ThreeScene = ({ mousePosition }: { mousePosition: { x: number; y: number } }) => {
@@ -163,6 +163,74 @@ const FloatingElement = ({ children, delay = 0 }: { children: React.ReactNode; d
   );
 };
 
+// Skill Category Component
+const SkillCategory = ({ category, skills, icon, color }: { 
+  category: string; 
+  skills: { name: string; level: number }[]; 
+  icon: React.ReactNode; 
+  color: string;
+}) => {
+  const [isVisible, setIsVisible] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current);
+      }
+    };
+  }, []);
+
+  return (
+    <div ref={ref} className="glass-morphism p-6 md:p-8 rounded-3xl group hover:scale-105 transition-all duration-300">
+      <div className="flex items-center mb-6">
+        <div className={`p-3 md:p-4 rounded-2xl ${color} mr-4 group-hover:scale-110 transition-transform`}>
+          {icon}
+        </div>
+        <div>
+          <h3 className="text-xl md:text-2xl font-bold mb-2">{category}</h3>
+          <p className="text-gray-400 text-sm md:text-base">Professional Level</p>
+        </div>
+      </div>
+      
+      <div className="space-y-4">
+        {skills.map((skill, index) => (
+          <div key={skill.name}>
+            <div className="flex justify-between mb-2">
+              <span className="text-white">{skill.name}</span>
+              <span className="text-cyan-400 font-bold">{skill.level}%</span>
+            </div>
+            <div className="relative">
+              <div className="w-full bg-gray-800 rounded-full h-3">
+                <div 
+                  className={`h-3 rounded-full ${color} transition-all duration-1000 ease-out`}
+                  style={{ 
+                    width: isVisible ? `${skill.level}%` : '0%',
+                    transitionDelay: `${index * 100}ms`
+                  }}
+                />
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
 // Main Portfolio Component
 const Portfolio = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -184,30 +252,85 @@ const Portfolio = () => {
 
   const projects = [
     {
-      title: "Neural Network Visualizer",
-      description: "Interactive 3D visualization of deep learning architectures with real-time training animations.",
-      tech: ["Three.js", "React", "WebGL", "TensorFlow.js"],
-      color: "from-purple-500 to-pink-500"
+      title: "SportsWear Website",
+      description: "A sportwear and casual wears online shopping website created with html, css and javascript.",
+      tech: ["HTML", "CSS", "JavaScript", "E-commerce"],
+      color: "from-red-300 to-blue-300",
+      link: "https://sportswear-git-main-libras-projects-12c552db.vercel.app/index.html",
+      github: "#"
     },
     {
-      title: "Quantum Portfolio Optimizer",
-      description: "Revolutionary financial tool using quantum algorithms for portfolio optimization.",
-      tech: ["Python", "Qiskit", "FastAPI", "React"],
-      color: "from-blue-500 to-cyan-500"
+      title: "Wordpress Lystial Recoup",
+      description: "LystialRecoup is a dedicated organization specializing in the recovery of cryptocurrencies from online fraudsters.",
+      tech: ["WordPress", "PHP", "Cryptocurrency", "Security"],
+      color: "from-blue-300 to-violet-300",
+      link: "https://lystialrecoup.tech/",
+      github: "#"
     },
     {
-      title: "AR Product Configurator",
-      description: "Augmented reality application for real-time product customization and visualization.",
-      tech: ["WebXR", "Three.js", "Machine Learning", "WebRTC"],
-      color: "from-green-500 to-teal-500"
+      title: "ChatBot App",
+      description: "This project is a chatbot implemented using machine learning techniques and libraries in Django and JavaScript.",
+      tech: ["Django", "JavaScript", "Machine Learning", "Python"],
+      color: "from-violet-300 to-purple-300",
+      link: "#",
+      github: "https://github.com/Librapraise/Chatbot-built-with-django-and-javascript"
+    },
+    {
+      title: "College Website",
+      description: "This website was built as a demo for a college using html, css and javascript",
+      tech: ["HTML", "CSS", "JavaScript", "Responsive Design"],
+      color: "from-purple-300 to-red-300",
+      link: "https://university-website-eosin.vercel.app/",
+      github: "#"
     }
   ];
 
-  const skills = [
-    { name: "Frontend Mastery", level: 95, icon: Code, color: "bg-gradient-to-r from-blue-500 to-purple-600" },
-    { name: "3D Graphics", level: 90, icon: Palette, color: "bg-gradient-to-r from-purple-500 to-pink-500" },
-    { name: "Performance", level: 93, icon: Zap, color: "bg-gradient-to-r from-yellow-500 to-red-500" },
-    { name: "Innovation", level: 98, icon: Star, color: "bg-gradient-to-r from-green-500 to-blue-500" }
+  const skillCategories = [
+    {
+      category: "Frontend Development",
+      skills: [
+        { name: "HTML/CSS", level: 95 },
+        { name: "JavaScript", level: 90 },
+        { name: "TypeScript", level: 85 },
+        { name: "React", level: 90 },
+        { name: "Next.js", level: 85 }
+      ],
+      icon: <Code className="w-6 h-6 md:w-8 md:h-8 text-white" />,
+      color: "bg-gradient-to-r from-blue-500 to-purple-600"
+    },
+    {
+      category: "UI & Animation",
+      skills: [
+        { name: "Tailwind CSS", level: 90 },
+        { name: "Framer Motion", level: 80 },
+        { name: "Responsive Design", level: 95 }
+      ],
+      icon: <Layout className="w-6 h-6 md:w-8 md:h-8 text-white" />,
+      color: "bg-gradient-to-r from-purple-500 to-pink-500"
+    },
+    {
+      category: "Backend Development",
+      skills: [
+        { name: "Node.js", level: 80 },
+        { name: "Express", level: 75 },
+        { name: "Django", level: 75 },
+        { name: "RESTful APIs", level: 85 },
+        { name: "GraphQL", level: 70 },
+        { name: "MongoDB", level: 75 }
+      ],
+      icon: <Server className="w-6 h-6 md:w-8 md:h-8 text-white" />,
+      color: "bg-gradient-to-r from-green-500 to-blue-500"
+    },
+    {
+      category: "Other Skills",
+      skills: [
+        { name: "Git/GitHub", level: 90 },
+        { name: "Jest", level: 70 },
+        { name: "Performance Optimization", level: 80 }
+      ],
+      icon: <Database className="w-6 h-6 md:w-8 md:h-8 text-white" />,
+      color: "bg-gradient-to-r from-yellow-500 to-red-500"
+    }
   ];
 
   return (
@@ -271,7 +394,7 @@ const Portfolio = () => {
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 p-6">
         <div className="flex justify-between items-center max-w-7xl mx-auto">
-          <div className="text-2xl font-bold text-gradient animate-glow">
+          <div className="text-2xl font-bold text-gradient animate-glow glass-morphism px-4 py-2 rounded-full transition-all duration-300 hover:scale-105">
             Portfolio
           </div>
           <div className="hidden md:flex space-x-8 glass-morphism px-6 py-3 rounded-full">
@@ -289,7 +412,7 @@ const Portfolio = () => {
       </nav>
 
       {/* Hero Section */}
-      <section id="about" className="min-h-screen flex items-center justify-center relative z-10">
+      <section id="hero" className="min-h-screen flex items-center justify-center relative z-10">
         <div className="text-center max-w-4xl mx-auto px-6">
           <FloatingElement>
             <h1 className={`text-4xl md:text-6xl lg:text-8xl font-bold mb-6 text-gradient animate-glow transition-all duration-1000 ${isLoaded ? 'animate-slideInUp' : 'opacity-0'}`}>
@@ -305,8 +428,8 @@ const Portfolio = () => {
 
           <FloatingElement delay={0.4}>
             <p className={`text-base md:text-lg lg:text-xl mb-12 text-gray-400 max-w-2xl mx-auto transition-all duration-1000 delay-400 ${isLoaded ? 'animate-slideInUp' : 'opacity-0'}`}>
-              Crafting immersive digital experiences that blur the line between reality and imagination. 
-              Specializing in cutting-edge web technologies.
+            I'm a frontend developer specializing in building exceptional digital experiences. 
+            Currently, I'm focused on creating accessible, human-centered products.
             </p>
           </FloatingElement>
 
@@ -333,6 +456,81 @@ const Portfolio = () => {
         </div>
       </section>
 
+
+      {/* About Section */}
+      <section id="about" className="min-h-screen py-20 relative z-10">
+        <div className="max-w-7xl mx-auto px-6">
+          <FloatingElement>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-16 text-gradient">
+              About Me
+            </h2>
+          </FloatingElement>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            {/* About Text */}
+            <FloatingElement delay={0.2}>
+              <div className="order-2 md:order-1">
+                <p className="mb-6 text-lg md:text-xl text-gray-300 leading-relaxed">
+                  Hello! I'm a passionate Frontend Developer with a love for creating beautiful, interactive, and user-friendly web experiences. My journey in web development started several years ago, and I've been hooked ever since.
+                </p>
+                
+                <p className="mb-6 text-lg md:text-xl text-gray-300 leading-relaxed">
+                  I specialize in building modern web applications using cutting-edge technologies like React, Next.js, and TypeScript. I'm particularly interested in creating smooth animations and interactive user interfaces that delight users.
+                </p>
+                
+                <p className="mb-8 text-lg md:text-xl text-gray-300 leading-relaxed">
+                  When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or sharing my knowledge through blog posts and tutorials.
+                </p>
+                
+                <div className="glass-morphism p-6 rounded-2xl">
+                  <h3 className="text-xl md:text-2xl font-bold mb-6 text-cyan-400">Tech Stack</h3>
+                  <div className="flex flex-wrap gap-3">
+                    {['JavaScript', 'TypeScript', 'React', 'Next.js', 'HTML5', 'CSS3', 'Tailwind CSS', 'Django', 'Node.js'].map((tech, index) => (
+                      <span
+                        key={index}
+                        className="px-4 py-2 bg-gradient-to-r from-purple-500/20 to-pink-500/20 backdrop-blur-sm rounded-full text-sm md:text-base text-white border border-purple-500/30 hover:scale-105 transition-transform cursor-default"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </FloatingElement>
+            
+            {/* About Image */}
+            <FloatingElement delay={0.4}>
+              <div className="order-1 md:order-2 flex justify-center">
+                <div className="relative w-64 h-64 md:w-80 md:h-80">
+                  {/* Rotating border */}
+                  <div className="absolute inset-0 rounded-full rotating-border">
+                    <div className="w-full h-full rounded-full border-2 border-transparent bg-gradient-to-r from-purple-500 to-pink-500 p-0.5">
+                      <div className="w-full h-full rounded-full bg-gray-900"></div>
+                    </div>
+                  </div>
+                  
+                  {/* Outer glow */}
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-purple-500/20 to-pink-500/20 blur-xl"></div>
+                  
+                  {/* Main image container */}
+                  <div className="absolute inset-4 rounded-full overflow-hidden border-4 border-gray-800 bg-gradient-to-br from-gray-800 to-gray-900">
+                    {/* Placeholder for profile image */}
+                    <div className="w-full h-full bg-gradient-to-br from-purple-500/30 to-pink-500/30 flex items-center justify-center">
+                      <div className="text-6xl md:text-8xl text-white/50">👨‍💻</div>
+                    </div>
+                  </div>
+                  
+                  {/* Additional floating elements */}
+                  <div className="absolute -top-4 -right-4 w-8 h-8 bg-cyan-400 rounded-full animate-pulse"></div>
+                  <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-purple-400 rounded-full animate-pulse" style={{animationDelay: '1s'}}></div>
+                </div>
+              </div>
+            </FloatingElement>
+          </div>
+        </div>
+      </section>
+
+
       {/* Projects Section */}
       <section id="projects" className="min-h-screen py-20 relative z-10">
         <div className="max-w-7xl mx-auto px-6">
@@ -342,7 +540,7 @@ const Portfolio = () => {
             </h2>
           </FloatingElement>
 
-          <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
             {projects.map((project, index) => (
               <FloatingElement key={project.title} delay={index * 0.2}>
                 <div className="group glass-morphism p-6 md:p-8 rounded-3xl hover:scale-105 transition-all duration-500 cursor-pointer">
@@ -368,14 +566,24 @@ const Portfolio = () => {
                   </div>
                   
                   <div className="flex space-x-4">
-                    <button className="flex items-center space-x-2 text-cyan-400 hover:text-white transition-colors text-sm">
+                    <a 
+                      href={project.link} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex items-center space-x-2 text-cyan-400 hover:text-white transition-colors text-sm"
+                    >
                       <ExternalLink className="w-4 h-4" />
                       <span>Live Demo</span>
-                    </button>
-                    <button className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors text-sm">
+                    </a>
+                    <a 
+                      href={project.github} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors text-sm"
+                    >
                       <Github className="w-4 h-4" />
                       <span>Code</span>
-                    </button>
+                    </a>
                   </div>
                 </div>
               </FloatingElement>
@@ -386,37 +594,22 @@ const Portfolio = () => {
 
       {/* Skills Section */}
       <section id="skills" className="min-h-screen py-20 relative z-10">
-        <div className="max-w-6xl mx-auto px-6">
+        <div className="max-w-7xl mx-auto px-6">
           <FloatingElement>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-16 text-gradient">
-              Skills & Expertise
+              My Skills
             </h2>
           </FloatingElement>
 
           <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-            {skills.map((skill, index) => (
-              <FloatingElement key={skill.name} delay={index * 0.1}>
-                <div className="glass-morphism p-6 md:p-8 rounded-3xl group hover:scale-105 transition-all duration-300">
-                  <div className="flex items-center mb-6">
-                    <div className={`p-3 md:p-4 rounded-2xl ${skill.color} mr-4 group-hover:scale-110 transition-transform`}>
-                      <skill.icon className="w-6 h-6 md:w-8 md:h-8 text-white" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl md:text-2xl font-bold mb-2">{skill.name}</h3>
-                      <p className="text-gray-400 text-sm md:text-base">Expert Level</p>
-                    </div>
-                  </div>
-                  
-                  <div className="relative">
-                    <div className="w-full bg-gray-800 rounded-full h-3 mb-2">
-                      <div 
-                        className={`h-3 rounded-full ${skill.color} transition-all duration-1000 ease-out`}
-                        style={{ width: `${skill.level}%` }}
-                      />
-                    </div>
-                    <span className="text-cyan-400 font-bold">{skill.level}%</span>
-                  </div>
-                </div>
+            {skillCategories.map((skillCategory, index) => (
+              <FloatingElement key={skillCategory.category} delay={index * 0.2}>
+                <SkillCategory 
+                  category={skillCategory.category}
+                  skills={skillCategory.skills}
+                  icon={skillCategory.icon}
+                  color={skillCategory.color}
+                />
               </FloatingElement>
             ))}
           </div>
@@ -441,7 +634,7 @@ const Portfolio = () => {
           <FloatingElement delay={0.4}>
             <div className="flex flex-wrap justify-center gap-4 md:gap-8 mb-12">
               {[
-                { icon: Mail, label: 'hello@praisealabi.dev' },
+                { icon: Mail, label: 'alabipraise26@gmail.com' },
                 { icon: Linkedin, label: 'LinkedIn' },
                 { icon: Github, label: 'GitHub' }
               ].map((contact, index) => (
