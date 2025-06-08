@@ -2,7 +2,8 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import * as THREE from 'three';
-import { ChevronDown, Github, Linkedin, Mail, ExternalLink, Code, Layout, Database, Server, Star, ArrowRight, Globe } from 'lucide-react';
+import { ChevronDown, Github, Linkedin, Mail, ExternalLink, Code, Layout, Database, Server, Star, ArrowRight, Globe, ChevronUp } from 'lucide-react';
+import { image } from 'framer-motion/client';
 
 // Custom 3D Scene Component
 const ThreeScene = ({ mousePosition }: { mousePosition: { x: number; y: number } }) => {
@@ -256,22 +257,25 @@ const Portfolio = () => {
       description: "A sportwear and casual wears online shopping website created with html, css and javascript.",
       tech: ["HTML", "CSS", "JavaScript", "E-commerce"],
       color: "from-red-300 to-blue-300",
+      image: "/sportswear.png",
       link: "https://sportswear-git-main-libras-projects-12c552db.vercel.app/index.html",
-      github: "#"
+      github: "https://github.com/Librapraise/Sportswear.git"
     },
     {
-      title: "Wordpress Lystial Recoup",
-      description: "LystialRecoup is a dedicated organization specializing in the recovery of cryptocurrencies from online fraudsters.",
-      tech: ["WordPress", "PHP", "Cryptocurrency", "Security"],
+      title: "MINDAI JOURNAL",
+      description: "Your private space for reflection, growth, and mental wellness. Track your journey and gain insights.",
+      tech: ["Next.js", "Typescript", "FastApi", "Tailwind CSS"],
       color: "from-blue-300 to-violet-300",
-      link: "https://lystialrecoup.tech/",
-      github: "#"
+      image: "/mindai.png",
+      link: "https://mindjoural.site/",
+      github: "https://github.com/Librapraise/MindAIJournal.git"
     },
     {
       title: "ChatBot App",
       description: "This project is a chatbot implemented using machine learning techniques and libraries in Django and JavaScript.",
       tech: ["Django", "JavaScript", "Machine Learning", "Python"],
       color: "from-violet-300 to-purple-300",
+      image: "https://images.pexels.com/photos/18540208/pexels-photo-18540208/free-photo-of-wood-landscape-water-hill.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       link: "#",
       github: "https://github.com/Librapraise/Chatbot-built-with-django-and-javascript"
     },
@@ -280,9 +284,19 @@ const Portfolio = () => {
       description: "This website was built as a demo for a college using html, css and javascript",
       tech: ["HTML", "CSS", "JavaScript", "Responsive Design"],
       color: "from-purple-300 to-red-300",
+      image: "uniweb.png",
       link: "https://university-website-eosin.vercel.app/",
-      github: "#"
-    }
+      github: "https://github.com/Librapraise/university-website.git"
+    },
+    {
+      title: "Lendsqr Frontend Challenge",
+      description: "This project is a responsive and interactive frontend dashboard built with React, TypeScript, and SCSS for Lendsqr. It features user authentication, a dynamic user dashboard, filtering and pagination, and detailed user information pages—all integrated with a mock API.",
+      tech: ["React", "CSS", "TypeScript", "Responsive Design"],
+      color: "from-purple-300 to-red-300",
+      image: "lendsqr.png",
+      link: "https://lendsqr-fe-test-silk.vercel.app/",
+      github: "https://github.com/Librapraise/lendsqr-fe-test.git"
+    },
   ];
 
   const skillCategories = [
@@ -332,6 +346,44 @@ const Portfolio = () => {
       color: "bg-gradient-to-r from-yellow-500 to-red-500"
     }
   ];
+
+  // Contact Info with Links
+  const contacts = [
+    { 
+      icon: Mail, 
+      label: 'Email',
+      href: 'mailto:alabipraise26@gmail.com',
+      ariaLabel: 'Send an email to Praise Alabi'
+    },
+    { 
+      icon: Linkedin, 
+      label: 'LinkedIn', 
+      // TODO: Replace with your LinkedIn profile URL
+      href: 'https://www.linkedin.com/in/praise-alabi',
+      ariaLabel: 'View Praise Alabi\'s LinkedIn profile'
+    },
+    { 
+      icon: Github, 
+      label: 'GitHub',
+      href: 'https://github.com/Librapraise',
+      ariaLabel: 'View Praise Alabi\'s GitHub profile'
+    }
+  ];
+
+  const [showScrollTopButton, setShowScrollTopButton] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTopButton(window.scrollY > 300);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
     <div className="relative min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white overflow-hidden">
@@ -435,18 +487,20 @@ const Portfolio = () => {
 
           <FloatingElement delay={0.6}>
             <div className={`flex flex-wrap justify-center gap-6 transition-all duration-1000 delay-600 ${isLoaded ? 'animate-slideInUp' : 'opacity-0'}`}>
-              <button className="group glass-morphism px-6 md:px-8 py-3 md:py-4 rounded-full hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-500 transition-all duration-300 transform hover:scale-105">
+              {/* --- LINK ADDED --- */}
+              <a href="#projects" className="group glass-morphism px-6 md:px-8 py-3 md:py-4 rounded-full hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-500 transition-all duration-300 transform hover:scale-105 inline-block">
                 <span className="flex items-center space-x-2">
                   <span>View Projects</span>
                   <ArrowRight className="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform" />
                 </span>
-              </button>
-              <button className="group glass-morphism px-6 md:px-8 py-3 md:py-4 rounded-full hover:bg-gradient-to-r hover:from-blue-500 hover:to-cyan-500 transition-all duration-300 transform hover:scale-105">
+              </a>
+              {/* --- LINK ADDED --- */}
+              <a href="#contact" className="group glass-morphism px-6 md:px-8 py-3 md:py-4 rounded-full hover:bg-gradient-to-r hover:from-blue-500 hover:to-cyan-500 transition-all duration-300 transform hover:scale-105 inline-block">
                 <span className="flex items-center space-x-2">
                   <Mail className="w-4 h-4 md:w-5 md:h-5" />
                   <span>Get in Touch</span>
                 </span>
-              </button>
+              </a>
             </div>
           </FloatingElement>
         </div>
@@ -455,7 +509,6 @@ const Portfolio = () => {
           <ChevronDown className="w-8 h-8 text-cyan-400 animate-pulse" />
         </div>
       </section>
-
 
       {/* About Section */}
       <section id="about" className="min-h-screen py-20 relative z-10">
@@ -530,7 +583,6 @@ const Portfolio = () => {
         </div>
       </section>
 
-
       {/* Projects Section */}
       <section id="projects" className="min-h-screen py-20 relative z-10">
         <div className="max-w-7xl mx-auto px-6">
@@ -543,10 +595,15 @@ const Portfolio = () => {
           <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
             {projects.map((project, index) => (
               <FloatingElement key={project.title} delay={index * 0.2}>
-                <div className="group glass-morphism p-6 md:p-8 rounded-3xl hover:scale-105 transition-all duration-500 cursor-pointer">
+                <div className="group glass-morphism p-6 md:p-8 rounded-3xl hover:scale-105 transition-all duration-500 flex flex-col h-full">
                   <div className={`w-full h-32 md:h-48 bg-gradient-to-br ${project.color} rounded-2xl mb-6 flex items-center justify-center relative overflow-hidden`}>
                     <div className="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-0 transition-all duration-300" />
-                    <Globe className="w-12 h-12 md:w-16 md:h-16 text-white group-hover:scale-125 transition-transform duration-300" />
+                      <img 
+                        src={project.image} 
+                        alt={project.title} 
+                        className="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-300"  
+                        loading="lazy"
+                      />
                   </div>
                   
                   <h3 className="text-xl md:text-2xl font-bold mb-4 group-hover:text-cyan-400 transition-colors">
@@ -565,25 +622,30 @@ const Portfolio = () => {
                     ))}
                   </div>
                   
-                  <div className="flex space-x-4">
-                    <a 
-                      href={project.link} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="flex items-center space-x-2 text-cyan-400 hover:text-white transition-colors text-sm"
-                    >
-                      <ExternalLink className="w-4 h-4" />
-                      <span>Live Demo</span>
-                    </a>
-                    <a 
-                      href={project.github} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors text-sm"
-                    >
-                      <Github className="w-4 h-4" />
-                      <span>Code</span>
-                    </a>
+                  {/* --- LINKS UPDATED --- */}
+                  <div className="flex space-x-4 mt-auto">
+                    {project.link && project.link !== '#' && (
+                      <a 
+                        href={project.link} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="flex items-center space-x-2 text-cyan-400 hover:text-white transition-colors text-sm"
+                      >
+                        <ExternalLink className="w-4 h-4" />
+                        <span>Live Demo</span>
+                      </a>
+                    )}
+                    {project.github && project.github !== '#' && (
+                      <a 
+                        href={project.github} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors text-sm"
+                      >
+                        <Github className="w-4 h-4" />
+                        <span>Code</span>
+                      </a>
+                    )}
                   </div>
                 </div>
               </FloatingElement>
@@ -631,27 +693,31 @@ const Portfolio = () => {
             </p>
           </FloatingElement>
 
+          {/* --- LINKS UPDATED --- */}
           <FloatingElement delay={0.4}>
             <div className="flex flex-wrap justify-center gap-4 md:gap-8 mb-12">
-              {[
-                { icon: Mail, label: 'alabipraise26@gmail.com' },
-                { icon: Linkedin, label: 'LinkedIn' },
-                { icon: Github, label: 'GitHub' }
-              ].map((contact, index) => (
-                <button
+              {contacts.map((contact) => (
+                <a
                   key={contact.label}
+                  href={contact.href}
+                  aria-label={contact.ariaLabel}
+                  target={contact.href.startsWith('mailto:') ? '_self' : '_blank'}
+                  rel="noopener noreferrer"
                   className="group glass-morphism p-4 md:p-6 rounded-full hover:scale-110 transition-all duration-300 hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-500"
                 >
                   <contact.icon className="w-6 h-6 md:w-8 md:h-8 group-hover:scale-125 transition-transform" />
-                </button>
+                </a>
               ))}
             </div>
           </FloatingElement>
 
           <FloatingElement delay={0.6}>
-            <button className="glass-morphism px-8 md:px-12 py-4 md:py-6 rounded-full text-lg md:text-xl font-bold hover:bg-gradient-to-r hover:from-cyan-500 hover:to-blue-500 transition-all duration-300 transform hover:scale-105 animate-glow">
+            <a 
+              href="mailto:alabipraise26@gmail.com"
+              className="glass-morphism px-8 md:px-12 py-4 md:py-6 rounded-full text-lg md:text-xl font-bold hover:bg-gradient-to-r hover:from-cyan-500 hover:to-blue-500 transition-all duration-300 transform hover:scale-105 animate-glow inline-block"
+            >
               Start a Project
-            </button>
+            </a>
           </FloatingElement>
         </div>
       </section>
@@ -672,6 +738,17 @@ const Portfolio = () => {
           <div className="w-2 h-2 md:w-3 md:h-3 bg-pink-400 rounded-full animate-pulse" />
         </FloatingElement>
       </div>
+
+      {/* --- MODIFICATION: Scroll to Top Button --- */}
+      <button
+        onClick={scrollToTop}
+        className={`cursor-pointer fixed bottom-8 right-8 z-50 p-3 rounded-full glass-morphism text-cyan-400 hover:text-white hover:bg-gradient-to-r from-purple-500 to-pink-500 transition-all duration-300 transform hover:scale-110 focus:outline-none ${
+          showScrollTopButton ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
+        }`}
+        aria-label="Scroll to top"
+      >
+        <ChevronUp className="w-6 h-6" />
+      </button>
     </div>
   );
 };
