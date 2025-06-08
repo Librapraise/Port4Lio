@@ -523,15 +523,15 @@ const Portfolio = () => {
             {/* About Text */}
             <FloatingElement delay={0.2}>
               <div className="order-2 md:order-1">
-                <p className="mb-6 text-lg md:text-xl text-gray-300 leading-relaxed font-bold">
+                <p className="mb-6 text-lg md:text-xl text-white leading-relaxed font-bold">
                   Hello! I'm a passionate Frontend Developer with a love for creating beautiful, interactive, and user-friendly web experiences. My journey in web development started several years ago, and I've been hooked ever since.
                 </p>
                 
-                <p className="mb-6 text-lg md:text-xl text-gray-300 leading-relaxed font-bold">
+                <p className="mb-6 text-lg md:text-xl text-white leading-relaxed font-bold">
                   I specialize in building modern web applications using cutting-edge technologies like React, Next.js, and TypeScript. I'm particularly interested in creating smooth animations and interactive user interfaces that delight users.
                 </p>
                 
-                <p className="mb-8 text-lg md:text-xl text-gray-300 leading-relaxed font-bold">
+                <p className="mb-8 text-lg md:text-xl text-white leading-relaxed font-bold">
                   When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or sharing my knowledge through blog posts and tutorials.
                 </p>
                 
