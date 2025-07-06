@@ -271,6 +271,15 @@ const Portfolio = () => {
       github: "https://github.com/Librapraise/MindAIJournal.git"
     },
     {
+      title: "AscendlyAI",
+      description: "AI Powered Productivity Tool for Professionals. Upload resumes, write cover letters, tailor resumes and generate interview questions",
+      tech: ["Next.js", "Typescript", "FastApi", "Tailwind CSS"],
+      color: "from-blue-300 to-violet-300",
+      image: "/ascendly.png",
+      link: "https://ascendly-ai-gilt.vercel.app/",
+      github: "https://github.com/Librapraise/AscendlyAI.git"
+    },
+    {
       title: "ChatBot App",
       description: "This project is a chatbot implemented using machine learning techniques and libraries in Django and JavaScript.",
       tech: ["Django", "JavaScript", "Machine Learning", "Python"],
