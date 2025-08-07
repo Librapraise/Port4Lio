@@ -306,6 +306,15 @@ const Portfolio = () => {
       link: "https://lendsqr-fe-test-silk.vercel.app/",
       github: "https://github.com/Librapraise/lendsqr-fe-test.git"
     },
+    {
+      title: "ArtFolio",
+      description: " A portfolio website showcasing a graphic designer's projects and skills, built with React, Next.js, Typescript and Tailwind CSS.",
+      tech: ["React", "CSS", "TypeScript", "Responsive Design"],
+      color: "from-purple-300 to-red-300",
+      image: "artfolio.png",
+      link: "https://artfolio-tau.vercel.app/",
+      github: "https://github.com/Librapraise/Artfolio.git"
+    },
   ];
 
   const skillCategories = [
