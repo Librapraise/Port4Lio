@@ -1,9 +1,13 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  webpack: (config: import('webpack').Configuration) => {
+import type { NextConfig } from 'next';
+
+const nextConfig: NextConfig = {
+  webpack: (config) => {
     config.externals = [...(Array.isArray(config.externals) ? config.externals : []), { canvas: 'canvas' }];
     return config;
   },
+  // Silence Turbopack warning when using webpack config
+  // @ts-ignore
+  turbopack: {}
 }
 
-module.exports = nextConfig
+export default nextConfig;
