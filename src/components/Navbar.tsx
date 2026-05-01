@@ -42,8 +42,12 @@ export const Navbar = () => {
       <nav className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
         <a href="#hero" className="flex items-center group">
-          <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-primary/20 group-hover:scale-110 transition-transform">
-            PA
+          <div className="relative w-12 h-12 flex items-center justify-center rounded-full overflow-hidden border border-white/10 bg-white/5 group-hover:scale-110 transition-transform duration-300">
+            <img 
+              src="/images/logo.png" 
+              alt="Praise Alabi Logo" 
+              className="w-full h-full object-cover"
+            />
           </div>
         </a>
 

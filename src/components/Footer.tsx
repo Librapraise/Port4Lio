@@ -16,8 +16,12 @@ export const Footer = () => {
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 relative z-10">
         {/* Brand */}
         <div className="col-span-1 md:col-span-2 space-y-6">
-          <div className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center font-black text-2xl shadow-lg shadow-primary/20">
-            PA
+          <div className="w-14 h-14 flex items-center justify-center rounded-full overflow-hidden border border-white/10 bg-white/5">
+            <img 
+              src="/images/logo.png" 
+              alt="Praise Alabi Logo" 
+              className="w-full h-full object-cover"
+            />
           </div>
           <p className="text-gray-400 max-w-sm leading-relaxed">
             Building the future of digital ecosystems. 
