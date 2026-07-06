@@ -5,6 +5,7 @@ import { navLinks } from "@/data/nav";
 import { ThemeToggle } from "./ThemeToggle";
 import { Menu, X } from "lucide-react";
 import { clsx } from "clsx";
+import { motion, AnimatePresence } from "framer-motion";
 
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -93,44 +94,51 @@ export const Navbar = () => {
           <ThemeToggle />
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="text-text-primary"
+            className="text-text-primary z-50"
+            aria-label="Toggle menu"
           >
-            {isMobileMenuOpen ? <X /> : <Menu />}
+            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
       </nav>
 
       {/* Mobile Menu Overlay */}
-      <div
-        className={clsx(
-          "fixed inset-0 bg-background backdrop-blur-2xl z-40 md:hidden transition-all duration-500 flex flex-col items-center justify-center gap-8",
-          isMobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none translate-y-full"
-        )}
-      >
-        {/* Close Button */}
-        <button
-          onClick={() => setIsMobileMenuOpen(false)}
-          className="absolute top-6 right-6 text-text-primary hover:text-primary transition-colors"
-          aria-label="Close menu"
-        >
-          <X className="w-8 h-8" />
-        </button>
-
-        {navLinks.map((link, i) => (
-          <a
-            key={link.name}
-            href={link.href}
-            onClick={() => setIsMobileMenuOpen(false)}
-            className="text-4xl font-heading font-bold hover:text-primary transition-colors"
-            style={{ 
-              transitionDelay: `${i * 100}ms`,
-              transform: isMobileMenuOpen ? 'translateY(0)' : 'translateY(20px)'
-            }}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: "-100%" }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: "-100%" }}
+            transition={{ type: "spring", damping: 25, stiffness: 180 }}
+            className="fixed inset-0 z-40 w-screen h-screen backdrop-blur-2xl flex flex-col items-center justify-center gap-8 md:hidden"
+            style={{ backgroundColor: 'var(--background)' }}
           >
-            {link.name}
-          </a>
-        ))}
-      </div>
+            <nav className="flex flex-col items-center gap-8">
+              {navLinks.map((link, i) => (
+                <motion.div
+                  key={link.name}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.05 + 0.1 }}
+                >
+                  <a
+                    href={link.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className={clsx(
+                      "text-4xl font-heading font-bold hover:text-primary transition-colors relative block py-2",
+                      activeSection === link.href.substring(1) 
+                        ? "text-primary" 
+                        : "text-text-primary"
+                    )}
+                  >
+                    {link.name}
+                  </a>
+                </motion.div>
+              ))}
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 };
