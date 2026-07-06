@@ -96,6 +96,15 @@ export const Navbar = () => {
           isMobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none translate-y-full"
         )}
       >
+        {/* Close Button */}
+        <button
+          onClick={() => setIsMobileMenuOpen(false)}
+          className="absolute top-6 right-6 text-text-primary hover:text-primary transition-colors"
+          aria-label="Close menu"
+        >
+          <X className="w-8 h-8" />
+        </button>
+
         {navLinks.map((link, i) => (
           <a
             key={link.name}
