@@ -32,6 +32,17 @@ export const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMobileMenuOpen]);
+
   return (
     <header
       className={clsx(
@@ -92,7 +103,7 @@ export const Navbar = () => {
       {/* Mobile Menu Overlay */}
       <div
         className={clsx(
-          "fixed inset-0 bg-background/95 backdrop-blur-2xl z-40 md:hidden transition-all duration-500 flex flex-col items-center justify-center gap-8",
+          "fixed inset-0 bg-background backdrop-blur-2xl z-40 md:hidden transition-all duration-500 flex flex-col items-center justify-center gap-8",
           isMobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none translate-y-full"
         )}
       >
