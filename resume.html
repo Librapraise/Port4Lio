@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Praise Alabi - CV</title>
+  <style>
+    @page {
+      size: letter;
+      margin: 10mm 14mm 10mm 14mm;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Liberation Serif', 'Times New Roman', Georgia, serif;
+      font-size: 10pt;
+      line-height: 1.35;
+      color: #1a1a1a;
+      background: #fff;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 12px;
+    }
+    .header h1 {
+      font-size: 22pt;
+      color: #2b5797;
+      font-weight: 700;
+      margin-bottom: 4px;
+      letter-spacing: 0.5px;
+    }
+    .header .contact-line {
+      font-size: 9.5pt;
+      color: #333;
+      margin-bottom: 2px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+    .header a {
+      color: #1a1a1a;
+      text-decoration: none;
+    }
+    
+    .section-title {
+      font-size: 10.5pt;
+      font-weight: 700;
+      color: #2b5797;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      border-bottom: 1.5px solid #2b5797;
+      padding-bottom: 2px;
+    }
+
+    .summary-text {
+      font-size: 9.5pt;
+      text-align: justify;
+      color: #222;
+      line-height: 1.35;
+    }
+
+    /* Skills Grid */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px 12px;
+      margin-top: 4px;
+      font-size: 9pt;
+    }
+    .skills-grid div {
+      position: relative;
+      padding-left: 10px;
+    }
+    .skills-grid div::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #333;
+    }
+
+    /* Experience */
+    .exp-item {
+      margin-top: 7px;
+      page-break-inside: avoid;
+    }
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+    .role-title {
+      font-weight: 700;
+      font-size: 10pt;
+      color: #111;
+    }
+    .date-location {
+      font-size: 9pt;
+      color: #444;
+      font-weight: 500;
+      text-align: right;
+    }
+    .company-name {
+      font-style: italic;
+      font-size: 9.5pt;
+      color: #444;
+      margin-bottom: 2px;
+    }
+    ul.bullet-list {
+      list-style-type: disc;
+      padding-left: 16px;
+      margin-top: 2px;
+    }
+    ul.bullet-list li {
+      font-size: 9.2pt;
+      margin-bottom: 1.5px;
+      line-height: 1.3;
+      color: #222;
+    }
+
+    .project-sublist {
+      list-style-type: circle;
+      padding-left: 14px;
+      margin-top: 1.5px;
+    }
+    .project-sublist li {
+      font-size: 8.8pt;
+      margin-bottom: 1px;
+    }
+
+    /* Education */
+    .edu-item {
+      margin-top: 6px;
+      page-break-inside: avoid;
+    }
+
+    /* Certification */
+    .cert-item {
+      margin-top: 6px;
+      page-break-inside: avoid;
+    }
+
+    /* Hobbies */
+    .hobbies-line {
+      font-size: 9pt;
+      margin-top: 4px;
+      word-spacing: 6px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>Praise Alabi</h1>
+    <div class="contact-line">
+      <span>✉ alabipraise26@gmail.com</span>
+      <span>📞 09070502559</span>
+      <span>🔗 https://port4-lio.vercel.app</span>
+    </div>
+    <div class="contact-line">
+      <span>in http://www.linkedin.com/in/praise-alabi</span>
+      <span>🐙 https://github.com/Librapraise</span>
+    </div>
+  </div>
+
+  <div class="section-title">SUMMARY</div>
+  <p class="summary-text">
+    Results-driven Full-Stack Software Engineer with 4+ years of professional experience architecting, building, and scaling web and mobile applications across diverse industries including Fintech, E-Commerce, and Healthtech. Proven expertise in React, Next.js, Node.js, TypeScript, and cloud services. Strong international collaborator with a track record of delivering high-performance, accessible solutions for global clients in the US, UK, Germany, and Nigeria.
+  </p>
+
+  <div class="section-title">SKILLS</div>
+  <div class="skills-grid">
+    <div>JavaScript (ES6+)</div>
+    <div>React.js / Next.js</div>
+    <div>Django / Python</div>
+    <div>MongoDB / Mongoose</div>
+    <div>AWS Cloud Services</div>
+    <div>PostgreSQL / Prisma</div>
+    <div>Technical Writing</div>
+    <div>React Native</div>
+    <div>TypeScript</div>
+    <div>Node.js / Express</div>
+    <div>Tailwind CSS</div>
+    <div>REST & GraphQL APIs</div>
+  </div>
+
+  <div class="section-title">EXPERIENCE</div>
+
+  <!-- TrueConnect Offers -->
+  <div class="exp-item">
+    <div class="exp-header">
+      <span class="role-title">Fullstack Software Engineer</span>
+      <span class="date-location">02/2026 – Present | Remote (USA)</span>
+    </div>
+    <div class="company-name">TrueConnect Offers</div>
+    <ul class="bullet-list">
+      <li>Architect and maintain full-stack web and mobile application features using Next.js, Node.js, and TypeScript.</li>
+      <li>Engineer scalable RESTful APIs and integrate secure payment systems and real-time transaction processing.</li>
+      <li>Optimize database queries and schema designs with PostgreSQL and Prisma to handle high concurrency.</li>
+      <li>Drive cross-functional agile sprints with international teams, delivering clean, unit-tested production code.</li>
+    </ul>
+  </div>
+
+  <!-- Hooom Technologies -->
+  <div class="exp-item">
+    <div class="exp-header">
+      <span class="role-title">Fullstack Developer</span>
+      <span class="date-location">11/2025 – 02/2026</span>
+    </div>
+    <div class="company-name">Hooom Technologies</div>
+    <ul class="bullet-list">
+      <li>Developed full user authentication systems using JWT, secure password hashing, and role-based access control.</li>
+      <li>Built responsive frontend interfaces with React/Next.js and integrated them with backend microservices.</li>
+      <li>Designed and implemented RESTful endpoints using Node.js and Express.</li>
+      <li>Created database schemas and queries using MongoDB/PostgreSQL and ORMs like Prisma or Mongoose.</li>
+      <li>Integrated third-party services such as payment gateways, email notification services, and cloud storage.</li>
+    </ul>
+  </div>
+
+  <!-- Front end developer at Sozorock Tech Inc. -->
+  <div class="exp-item">
+    <div class="exp-header">
+      <span class="role-title">Front end developer</span>
+      <span class="date-location">01/2024 – 11/2024 | Remote (UK)</span>
+    </div>
+    <div class="company-name">Sozorock Tech Inc.</div>
+    <ul class="bullet-list">
+      <li>Implemented modern frontend frameworks, enhancing development speed and feature delivery by 40%.</li>
+      <li>Collaborated with cross-functional UK product design and engineering teams to deliver client deliverables on time.</li>
+      <li>Integrated complex backend APIs seamlessly, expanding core product functionality and user reach.</li>
+      <li>Maintained high code quality standards through rigorous automated testing and peer code reviews.</li>
+      <li>Crafted responsive web designs that boosted user engagement by 30%.</li>
+      <li>Revamped corporate web platform using Next.js, resulting in measurable increases in organic web traffic and interaction.</li>
+      <li>Developed a custom UI component library, boosting developer productivity across sub-projects.</li>
+    </ul>
+  </div>
+
+  <!-- Tech Trend -->
+  <div class="exp-item">
+    <div class="exp-header">
+      <span class="role-title">Full-Stack Software Engineer</span>
+      <span class="date-location">01/2023 – 12/2023 | Remote (Germany)</span>
+    </div>
+    <div class="company-name">Tech Trend</div>
+    <ul class="bullet-list">
+      <li>Engineered robust web applications and interactive dashboards utilizing React.js, TypeScript, Node.js, and Express.</li>
+      <li>Streamlined API integrations and backend query performance, achieving 25% faster load times for data-heavy operations.</li>
+      <li>Collaborated with international backend teams to implement OAuth2 authentication, state management, and real-time alerts.</li>
+      <li>Maintained thorough technical documentation and automated CI/CD pipeline tests to ensure continuous deployment stability.</li>
+    </ul>
+  </div>
+
+  <!-- Freelance Web Developer -->
+  <div class="exp-item">
+    <div class="exp-header">
+      <span class="role-title">Freelance Web Developer</span>
+      <span class="date-location">03/2022 – Present | Remote</span>
+    </div>
+    <div class="company-name">Freelance</div>
+    <ul class="bullet-list">
+      <li>Designed and developed responsive, user-centric web applications for global clients across Fintech, Healthtech, and E-commerce.</li>
+      <li>Built production-ready interfaces with React.js, Next.js, TypeScript, and Tailwind CSS, ensuring cross-device optimization.</li>
+      <li>Collaborated with client teams to implement interactive dashboards, data visualization, and accessibility standards.</li>
+      <li>Key projects:
+        <ul class="project-sublist">
+          <li><strong>AscendlyAI</strong> (ascendly-ai-gilt.vercel.app) – AI-powered platform for resume and cover letter generation.</li>
+          <li><strong>MindAI Journal</strong> (mindjournal.site) – Interactive journaling web application with rich-text editing using Tiptap.</li>
+          <li><strong>ArtFolio</strong> (artfolio-tau.vercel.app) – Portfolio platform showcasing custom creative designs.</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Full-Stack Developer Intern -->
+  <div class="exp-item">
+    <div class="exp-header">
+      <span class="role-title">Full-Stack Developer Intern</span>
+      <span class="date-location">05/2022 – 12/2022</span>
+    </div>
+    <div class="company-name">Zuri Team</div>
+    <ul class="bullet-list">
+      <li>Gained practical experience in frontend and backend web development using HTML, CSS, JavaScript, React, Node.js, and Express.</li>
+      <li>Collaborated on team projects with Git/GitHub, built responsive user interfaces, and implemented authentication flows.</li>
+    </ul>
+  </div>
+
+  <div class="section-title">EDUCATION</div>
+  <div class="edu-item">
+    <div class="exp-header">
+      <span class="role-title">Bachelor of Engineering B.Eng, Mechanical engineering</span>
+      <span class="date-location">2018 – 2024</span>
+    </div>
+    <div class="company-name">Federal University of Technology, Akure, Ondo State</div>
+    <div style="font-size: 9pt; font-weight: 600; color: #333; margin-top: 1px;">Second Class Upper</div>
+    <ul class="bullet-list">
+      <li>Graduated with Honors in Bachelor of Engineering - B.Eng. | GPA: 4.04/5.0.</li>
+      <li>Completed capstone project on Water Purification for Household. Received Dean's List award for 2 consecutive years.</li>
+    </ul>
+  </div>
+
+  <div class="section-title">HOBBIES</div>
+  <div class="hobbies-line">
+    Playing football &nbsp;|&nbsp; reading &nbsp;|&nbsp; music &nbsp;|&nbsp; movies &nbsp;|&nbsp; exercising
+  </div>
+
+  <div class="section-title">CERTIFICATIONS</div>
+  
+  <div class="cert-item">
+    <div class="exp-header">
+      <span class="role-title">Meta Front-End Developer I & II</span>
+      <span class="date-location">08/2023 – 09/2023</span>
+    </div>
+    <div class="company-name">Coursera / Meta</div>
+    <ul class="bullet-list">
+      <li>Completed comprehensive training & capstones covering HTML5, CSS3, JavaScript ES6+, React.js, Context API, Redux, API integration, and Jest testing.</li>
+    </ul>
+  </div>
+
+  <div class="cert-item">
+    <div class="exp-header">
+      <span class="role-title">FullStack Developer Certification</span>
+      <span class="date-location">09/2022</span>
+    </div>
+    <div class="company-name">Zuri Team</div>
+    <ul class="bullet-list">
+      <li>Gained hands-on expertise building full-stack applications with reusable components, RESTful endpoints, and version control workflows.</li>
+    </ul>
+  </div>
+
+</body>
+</html>

@@ -55,7 +55,7 @@ export const About = () => {
           </div>
 
           <div className="grid grid-cols-3 gap-4">
-            <StatCard label="Years Exp" value="3" />
+            <StatCard label="Years Exp" value="4" />
             <StatCard label="Projects" value="15" />
             <StatCard label="Clients" value="5" />
           </div>

@@ -1,3 +1,5 @@
+import { li } from "framer-motion/client";
+
 export interface Project {
   title: string;
   description: string;
@@ -10,6 +12,16 @@ export interface Project {
 }
 
 export const projects: Project[] = [
+  {
+    title: "VibeSocial",
+    description: "Event & ticket management, community discovery, and social experience platform with real-time chat, interactive event check-in, venue booking, and Stripe payment processing.",
+    tech: ["React", "TypeScript", "Tailwind CSS", "Node.js", "Express", "Supabase", "Stripe"],
+    category: "Full-Stack",
+    image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80&w=1200",
+    link: "http://vibes-social.com/",
+    github: "https://github.com/Librapraise/vibesocial.git",
+    featured: true
+  },
   {
     title: "Courier Call Masking System",
     description: "Secure call masking solution for couriers to contact customers without exposing phone numbers. Features role-based access control (Courier/Admin), customer management dashboard, and call tracking.",
